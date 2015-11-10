@@ -26,3 +26,9 @@
 *.exe
 *.out
 *.app
+
+# idea project
+.idea/
+
+# build directory
+build/

@@ -10,42 +10,69 @@
 #define BoardTest_h
 
 #include <string>
+#include <iostream>
 #include "gtest/gtest.h"
 #include "Board.h"
+#include "Color.h"
 
 
 using testing::Test;
 using std::string;
+using std::cout;
+using std::endl;
+using UPoint = Point<unsigned>;
 
-class BoardTest : public Test {
+class BoardTest: public Test {
 };
 
+TEST_F(BoardTest, BoardSetup) {
+  Board board;
+  int num = 0;
+  int reds = 0;
+  int blacks = 0;
+//    auto squares = m_board.getSquares();
+  for (auto square_row : board.getSquares()) {
+    for (auto square : square_row) {
+      num++;
+//            cout << "position: " << square.toString() << endl;
+      if (square.getColor() == colors::red) {
+        reds++;
+      } else {
+        blacks++;
+      }
+    }
+  }
+  EXPECT_EQ(64, num);
+  EXPECT_EQ(32, blacks);
+  EXPECT_EQ(32, reds);
+}
+
 TEST_F(BoardTest, DrawTest) {
-    Board board;
-    board.Draw();
+  Board board;
+//    m_board.Draw();
 }
 
 TEST_F(BoardTest, TestCoordToPoint) {
-    Board board;
-    Point p1 = board.coordToPoint("A7");
-    EXPECT_EQ(0, p1.getX());
-    EXPECT_EQ(0, p1.getY());
+  Board board;
+  UPoint p1 = board.coordToPoint("A7");
+  EXPECT_EQ(0, p1.getX());
+  EXPECT_EQ(0, p1.getY());
 
-    Point p2 = board.coordToPoint("H0");
-    EXPECT_EQ(7, p2.getX());
-    EXPECT_EQ(7, p2.getY());
+  UPoint p2 = board.coordToPoint("H0");
+  EXPECT_EQ(7, p2.getX());
+  EXPECT_EQ(7, p2.getY());
 }
 
 TEST_F(BoardTest, TestPointToCoord) {
-    Board board;
+  Board board;
 
-    string coord1;
-    coord1 = board.pointToCoord(Point(0, 0));
-    EXPECT_EQ("A0", coord1);
+  string coord1;
+  coord1 = board.pointToCoord(UPoint(0, 0));
+  EXPECT_EQ("A0", coord1);
 
-    string coord2;
-    coord2 = board.pointToCoord(Point(7, 7));
-    EXPECT_EQ("H7", coord2);
+  string coord2;
+  coord2 = board.pointToCoord(UPoint(7, 7));
+  EXPECT_EQ("H7", coord2);
 }
 
 

@@ -29,30 +29,25 @@ const int cols = 80;
 
 class TerminalSprite {
  public:
-    TerminalSprite() {
-        clear();
-    }
-
-    void clear();
-    void clear(uint8_t newchar);
-    void renderLine(uint8_t newchar, int startrow, int startcol, int endrow,
+  TerminalSprite();
+  void clear();
+  void clear(char newchar);
+  void renderLine(char newchar, int startrow, int startcol, int endrow,
+                  int endcol);
+  void renderPoint(char newchar, int row, int col);
+  void renderHLine(char newchar, int startrow, int startcol, int lenght);
+  void renderVLine(char newchar, int startrow, int startcol, int lenght);
+  void renderSquare(char newchar, int startrow, int startcol, int endrow,
                     int endcol);
-    void renderPoint(uint8_t newchar, int row, int col);
-    void renderHLine(uint8_t newchar, int startrow, int startcol, int lenght);
-    void renderVLine(uint8_t newchar, int startrow, int startcol, int lenght);
-    void renderSquare(uint8_t newchar, int startrow, int startcol, int endrow,
-                      int endcol);
-    void draw();
-    string toString();
+  void draw();
+  string toString();
  private:
-    bool validRow(int row);
-    bool validCol(int col);
+  bool validRow(int row);
+  bool validCol(int col);
 
  private:
-    uint8_t matrix[rows][cols];
+  char matrix[rows][cols];
 };
-
-
 
 
 #endif /* TerminalSprite_h */

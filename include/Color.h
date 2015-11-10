@@ -16,20 +16,12 @@ using std::string;
 using std::vector;
 
 enum class colors {
-    none = 0, red, black
+  none = 0, red, black, white
 };
 
 class ColorStr {
  public:
-    static string toString(colors color){
-        if (color == colors::red) {
-            return "red";
-        } else if (color == colors::black) {
-            return "black";
-        }
-
-        return "none";
-    }
+  static string toString(colors color);
 };
 
 #endif /* Color_h */

@@ -14,18 +14,16 @@
 
 using testing::Test;
 
-class ColorTest : public Test {
-    
+class ColorTest: public Test {
 };
 
 TEST_F(ColorTest, toStringTest) {
-    colors color = colors::red;
-    EXPECT_EQ(colors::red, color);
-    
-    EXPECT_EQ("none", ColorStr::toString(colors::none));
-    EXPECT_EQ("red", ColorStr::toString(colors::red));
-    EXPECT_EQ("black", ColorStr::toString(colors::black));
-    
+  colors color = colors::red;
+  EXPECT_EQ(colors::red, color);
+
+  EXPECT_EQ("none", ColorStr::toString(colors::none));
+  EXPECT_EQ("red", ColorStr::toString(colors::red));
+  EXPECT_EQ("black", ColorStr::toString(colors::black));
 }
 
 

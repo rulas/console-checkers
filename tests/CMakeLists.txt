@@ -10,14 +10,14 @@ include_directories(${GTEST_INCLUDE_DIRS})
 
 
 set(TEST_FILES
-    BoardTest.h
-    ColorTest.h
-    GameTest.h
-    PieceTest.h
-    PointTest.h
-    SquareTest.h
-    TerminalSpriteTest.h
-)
+        BoardTest.h
+        ColorTest.h
+        GameTest.h
+        PieceTest.h
+        PointTest.h
+        SquareTest.h
+        TerminalSpriteTest.h
+        )
 
 add_executable(runTests tests.cpp ${TEST_FILES})
 target_link_libraries(runTests checkers ${GTEST_BOTH_LIBRARIES})

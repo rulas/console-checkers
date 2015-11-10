@@ -14,51 +14,32 @@
 #include <vector>
 #include "Point.h"
 #include "Color.h"
+#include "Piece.h"
 
-using std::stringstream;
 using std::string;
 using std::vector;
 
+using UPoint = Point<unsigned>;
+
 class Square {
- private:
-    Point position;
-    colors color;
-
  public:
-    Square() {
-        position = Point(0, 0);
-        color = colors::red;
-    }
+  Square();
+  Square(colors newcolor, UPoint newpos);
+  Square(colors newcolor, UPoint newpos, Piece *piece);
+  ~Square();
+  UPoint getPosition();
+  void setPosition(UPoint newpos);
+  colors getColor();
+  void setColor(colors newcolor);
+  void setPiece(Piece *newpiece);
+  Piece *getPiece();
+  bool hasPiece();
+  string toString();
 
-    Square(colors newcolor, Point newpos) {
-        position = newpos;
-        color = newcolor;
-    }
-
-    Point getPosition() {
-        return position;
-    }
-
-    void setPosition(Point newpos) {
-        position = newpos;
-    }
-
-    colors getColor() {
-        return color;
-    }
-
-    void setColor(colors newcolor) {
-        color = newcolor;
-    }
-
-    string toString() {
-        stringstream ss;
-
-        ss << "Square <" << ColorStr::toString(color)
-            << ", " << position.toString() << ">";
-
-        return ss.str();
-    }
+ private:
+  UPoint position;
+  colors color;
+  Piece *piece;
 };
 
 

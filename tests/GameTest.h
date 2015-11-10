@@ -14,14 +14,13 @@
 
 using testing::Test;
 
-class GameTest : public Test {
+class GameTest: public Test {
 };
 
 TEST_F(GameTest, CreateBoard) {
 //    Game game;
 //    game.run();
 }
-
 
 
 #endif /* GameTest_h */

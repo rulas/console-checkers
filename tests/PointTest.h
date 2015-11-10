@@ -9,21 +9,37 @@
 #ifndef TestPoint_h
 #define TestPoint_h
 
+#include <iostream>
 #include "Point.h"
 #include "gtest/gtest.h"
-#include <iostream>
+
+using UPoint = Point<unsigned>;
 
 using testing::Test;
 using std::cout;
 using std::endl;
 
-class PointTest : public Test {
+class PointTest: public Test {
 };
 
 TEST_F(PointTest, HelloTest) {
-    Point p(10, 20);
-    EXPECT_EQ(10, p.getX());
-    EXPECT_EQ(20, p.getY());
+  UPoint p(10, 20);
+  EXPECT_EQ(10, p.getX());
+  EXPECT_EQ(20, p.getY());
+}
+
+TEST_F(PointTest, OffsetTest) {
+  UPoint p1(10, 10);
+  UPoint p2(0, 0);
+  UPoint p3;
+
+  p3 = p1 + p2;
+  EXPECT_EQ(10, p3.getX());
+  EXPECT_EQ(10, p3.getY());
+
+  p3 = p1 + UPoint(10, 10);
+  EXPECT_EQ(20, p3.getX());
+  EXPECT_EQ(20, p3.getY());
 }
 
 
